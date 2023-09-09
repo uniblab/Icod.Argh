@@ -12,7 +12,8 @@ forms it can take on the command line.  For example, it is quite common
 for "help" to be supported by both "-h" or "--help".  `Icod.Argh`
 permits one definition for any given switch not matter how many forms
 it make take.
-Example: ```C#
+Example:
+```C#
 var help = Icod.Argh.Definition( "help", new System.String[] { "-h", "--help", "/help" } );
 ```
 
@@ -21,7 +22,8 @@ The `Processor` performs the work of analyzing and parsing out the `args`
 based on the supplied `Definition` list.  Once the `args` have been parsed,
 the `Processor` instance can be queried to see which switches were present,
 if they have associated values, and so forth.
-Example: ```C#
+Example:
+```C#
 private static System.Int32 main( System.String[] args ) {
 	var processor = new Icod.Argh.Processor(
 		new Icod.Argh.Definition[] {
