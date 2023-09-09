@@ -43,18 +43,33 @@ private static System.Int32 main( System.String[] args ) {
 		PrintCopyright();
 		return 1;
 	}
+
 	System.String? inputPathName = null;
 	if ( processor.Contains( "input" ) ) {
-		inputPathName = processor.Value( "input" );
+		inputPathName = processor.Value( "input" ).TrimToNull();
+		if ( System.String.IsNullOrEmpty( inputPathName ) ) {
+			PrintUsage();
+			return 1;
+		}
 	}
 	System.String? outputPathName = null;
 	if ( processor.Contains( "output" ) ) {
-		outputPathName = processor.Value( "output" );
+		outputPathName = processor.Value( "output" ).TrimToNull();
+		if ( System.String.IsNullOrEmpty( inputPathName ) ) {
+			PrintUsage();
+			return 1;
+		}
 	}
-	System.String suffix = processor.Contains( "suffix" )
-		? processor.Value( "suffix" ) ?? System.String.Empty
-		: System.String.Empty
-	;
+	if ( !processor.Contains( "suffix" ) ) {
+		PrintUsage();
+		return 1;
+	}
+	var probe = processor.Value( "suffix" ).TrimToNull();
+	if ( System.String.IsNullOrEmpty( probe ) ) {
+		PrintUsage();
+		return 1;
+	}
+	System.String suffix = probe!;
 	System.Boolean trim = processor.Contains( "trim" );
 
 	// do work
