@@ -33,13 +33,13 @@
 		<RepositoryUrl>https://github.com/uniblab/Icod.Argh</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>args;console</PackageTags>
-		<PackageLicenseFile>Icod.Argh.License</PackageLicenseFile>
+		<PackageLicenseFile>Icod.Argh.License.txt</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 	<ItemGroup>
-	  <None Update="Icod.Argh.License">
+	  <None Update="Icod.Argh.License.txt">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
