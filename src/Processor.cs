@@ -1,6 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-
-namespace Icod.Argh {
+﻿namespace Icod.Argh {
 
 	public class Processor {
 
@@ -23,6 +21,15 @@ namespace Icod.Argh {
 		#endregion .ctor
 
 
+		#region properties
+		public String? this[ System.String name ] {
+			get {
+				return Value( name );
+			}
+		}
+		#endregion properties
+
+
 		#region methods
 		public System.Boolean Contains( System.String name ) {
 			return myMap.ContainsKey( name );
@@ -33,6 +40,23 @@ namespace Icod.Argh {
 		}
 		public System.String Value( System.String name ) {
 			return myMap[ name ].First();
+		}
+
+		public System.Boolean TryGetValue( System.String name, System.Boolean trim, out System.String? value ) {
+			value = null;
+			if ( !myMap.ContainsKey( name ) ) {
+				return false;
+			}
+			var vals = myMap[ name ];
+			if ( !vals.Any() ) {
+				return true;
+			}
+			System.String? val = vals.First();
+			value = trim
+				? Processor.TrimToNull( val )
+				: val
+			;
+			return true;
 		}
 
 		public void Parse( System.String[] args ) {
@@ -92,6 +116,20 @@ namespace Icod.Argh {
 			return pq;
 		}
 		#endregion methods
+
+
+		#region static methods
+		private static System.String? TrimToNull( System.String? @string ) {
+			if ( System.String.IsNullOrEmpty( @string ) ) {
+				return null;
+			}
+			@string = @string.Trim();
+			return System.String.IsNullOrEmpty( @string )
+				? null
+				: @string
+			;
+		}
+		#endregion static methods
 
 	}
 }
