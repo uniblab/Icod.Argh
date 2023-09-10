@@ -53,7 +53,7 @@ public static System.Int32 main( System.String[] args ) {
 		return 1;
 	}
 
-	System.Func<System.String, System.Collections.Generic.IEnumerable<System.String>> reader;
+	System.Func<System.String?, System.Collections.Generic.IEnumerable<System.String>> reader;
 	// input is optional
 	if ( processor.TryGetValue( "input", true, out var inputPathName ) ) {
 		// if present it must specify a file pathname
@@ -61,7 +61,7 @@ public static System.Int32 main( System.String[] args ) {
 			PrintUsage();
 			return 1;
 		} else {
-			reader = x => ReadFile( x );
+			reader = x => ReadFile( x! );
 		}
 	} else {
 		// if not specified, then we read from StdIn
