@@ -83,7 +83,7 @@ namespace Icod.Argh {
 			do {
 				element = args[ ++i ];
 				foreach ( var d in myDefinition ) {
-					if ( d.Switch.Contains( element ) ) {
+					if ( d.Switch.Contains( element, myComparer ) ) {
 						pq.Enqueue( new Pair<Definition, System.Int32>( d, i ), i );
 						break;
 					}
