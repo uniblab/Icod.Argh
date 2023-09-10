@@ -37,6 +37,9 @@
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<FileVersion>1.0.1.0</FileVersion>
+		<AssemblyVersion>1.0.1.0</AssemblyVersion>
+		<PackageVersion>1.0.1</PackageVersion>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Update="Icod.Argh.License.txt">
