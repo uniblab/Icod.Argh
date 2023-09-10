@@ -77,7 +77,7 @@ namespace Icod.Argh {
 		}
 		private System.Collections.Generic.PriorityQueue<Pair<Definition, System.Int32>, System.Int32> GetPositionMap( System.String[] args ) {
 			var pq = new System.Collections.Generic.PriorityQueue<Pair<Definition, System.Int32>, System.Int32>();
-			var len = args.Length;
+			var stop = args.Length - 1;
 			var i = -1;
 			System.String element;
 			do {
@@ -88,7 +88,7 @@ namespace Icod.Argh {
 						break;
 					}
 				}
-			} while ( i < len );
+			} while ( i < stop );
 			return pq;
 		}
 		#endregion methods
