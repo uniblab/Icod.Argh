@@ -27,11 +27,18 @@ Example:
 private static System.Int32 main( System.String[] args ) {
 	var processor = new Icod.Argh.Processor(
 		new Icod.Argh.Definition[] {
+			// help and copyright unary flags which perform respective display and then exit
+			// (ex: --help), (ex: --copyright)
 			new Icod.Argh.Definition( "help", new System.String[] { "-h", "--help", "/help" } ),
 			new Icod.Argh.Definition( "copyright", new System.String[] { "-c", "--copyright", "/copyright" } ),
+
+			// input is optional, but if present must precede a file pathname (ex: --input C:\foo\bar.baz)
 			new Icod.Argh.Definition( "input", new System.String[] { "-i", "--input", "/input" } ),
-			new Icod.Argh.Definition( "output", new System.String[] { "-o", "--output", "/output" } ),
+
+			// suffix is required and must precede a string (ex: --suffix "this string has spaces")
 			new Icod.Argh.Definition( "suffix", new System.String[] { "-s", "--suffix", "/suffix" } ),
+
+			// trim is a unary flag, used on its own (ex: --trim)
 			new Icod.Argh.Definition( "trim", new System.String[] { "-t", "--trim", "/trim" } ),
 		},
 		System.StringComparer.OrdinalIgnoreCase
@@ -46,32 +53,29 @@ private static System.Int32 main( System.String[] args ) {
 		return 1;
 	}
 
-	System.String? inputPathName = null;
-	if ( processor.Contains( "input" ) ) {
-		inputPathName = processor.Value( "input" ).TrimToNull();
+	System.Func<System.String, System.Collections.Generic.IEnumerable<System.String>> reader;
+	// input is optional
+	if ( processor.TryGetValue( "input", true, out var inputPathName ) ) {
+		// if present it must specify a file pathname
 		if ( System.String.IsNullOrEmpty( inputPathName ) ) {
 			PrintUsage();
 			return 1;
+		} else {
+			reader = x => ReadFile( x );
 		}
+	} else {
+		// if not specified, then we read from StdIn
+		reader = x => ReadStdIn();
 	}
-	System.String? outputPathName = null;
-	if ( processor.Contains( "output" ) ) {
-		outputPathName = processor.Value( "output" ).TrimToNull();
-		if ( System.String.IsNullOrEmpty( inputPathName ) ) {
-			PrintUsage();
-			return 1;
-		}
-	}
-	if ( !processor.Contains( "suffix" ) ) {
+
+	if ( 
+		( !processor.TryGetValue( "suffix", true, out var suffix ) )
+		|| System.String.IsNullOrEmpty( suffix )
+	) {
 		PrintUsage();
 		return 1;
 	}
-	var probe = processor.Value( "suffix" ).TrimToNull();
-	if ( System.String.IsNullOrEmpty( probe ) ) {
-		PrintUsage();
-		return 1;
-	}
-	System.String suffix = probe!;
+
 	System.Boolean trim = processor.Contains( "trim" );
 
 	// do work
