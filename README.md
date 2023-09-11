@@ -24,7 +24,7 @@ the `Processor` instance can be queried to see which switches were present,
 if they have associated values, and so forth.
 Example:
 ``` csharp
-public static System.Int32 main( System.String[] args ) {
+public static System.Int32 Main( System.String[] args ) {
 	var processor = new Icod.Argh.Processor(
 		new Icod.Argh.Definition[] {
 			// help and copyright unary flags which perform respective display and then exit
