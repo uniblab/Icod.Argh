@@ -13,7 +13,7 @@ for "help" to be supported by both "-h" or "--help".  `Icod.Argh`
 permits one definition for any given switch not matter how many forms
 it make take.
 Example:
-```C#
+``` csharp
 var help = Icod.Argh.Definition( "help", new System.String[] { "-h", "--help", "/help" } );
 ```
 
@@ -23,7 +23,7 @@ based on the supplied `Definition` list.  Once the `args` have been parsed,
 the `Processor` instance can be queried to see which switches were present,
 if they have associated values, and so forth.
 Example:
-```C#
+``` csharp
 public static System.Int32 main( System.String[] args ) {
 	var processor = new Icod.Argh.Processor(
 		new Icod.Argh.Definition[] {
