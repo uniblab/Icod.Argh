@@ -10,7 +10,7 @@ to the `Processor` class and invokes the `Parse` method.
 The `Definition` class is used to define a switch, and what possible 
 forms it can take on the command line.  For example, it is quite common
 for "help" to be supported by both "-h" or "--help".  `Icod.Argh`
-permits one definition for any given switch not matter how many forms
+permits one definition for any given switch no matter how many forms
 it make take.
 Example:
 ``` csharp
