@@ -37,9 +37,9 @@
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<FileVersion>1.1.0.0</FileVersion>
-		<AssemblyVersion>1.1.0.0</AssemblyVersion>
-		<PackageVersion>1.1.0</PackageVersion>
+		<FileVersion>1.1.1.0</FileVersion>
+		<AssemblyVersion>1.1.1.0</AssemblyVersion>
+		<PackageVersion>1.1.1</PackageVersion>
 		<PackageReleaseNotes>Added friendly TryGetValue function.</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup>
