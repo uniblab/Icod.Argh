@@ -24,7 +24,7 @@
 		#region properties
 		public String? this[ System.String name ] {
 			get {
-				return Value( name );
+				return GetValue( name );
 			}
 		}
 		#endregion properties
@@ -38,7 +38,7 @@
 		public System.Collections.Generic.IEnumerable<System.String> ValuesOf( System.String name ) {
 			return myMap[ name ];
 		}
-		public System.String Value( System.String name ) {
+		public System.String GetValue( System.String name ) {
 			return myMap[ name ].First();
 		}
 
