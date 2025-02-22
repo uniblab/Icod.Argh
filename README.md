@@ -86,7 +86,7 @@ public static System.Int32 Main( System.String[] args ) {
 
 ## Copyright and Licensing
 Icod.Argh is a command-line arguments handler and processor.
-Copyright (C) 2023 Timothy J. Bruce
+Copyright (C) 2025 Timothy J. Bruce
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public

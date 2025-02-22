@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Icod.Argh is a command-line arguments handler and processor.
-    Copyright (C) 2023 Timothy J. Bruce
+    Copyright (C) 2025 Timothy J. Bruce
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -27,7 +27,7 @@
 		<Title>Icod Argument Handler</Title>
 		<Authors>uniblab</Authors>
 		<Description>$(AssemblyName) is a command-line arguments handler and processor.</Description>
-		<Copyright>Copyright (c) 2023 Timothy J. Bruce</Copyright>
+		<Copyright>Copyright (c) 2025 Timothy J. Bruce</Copyright>
 		<PackageProjectUrl>https://github.com/uniblab/Icod.Argh</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/uniblab/Icod.Argh</RepositoryUrl>
@@ -37,10 +37,10 @@
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<FileVersion>1.1.1.0</FileVersion>
-		<AssemblyVersion>1.1.1.0</AssemblyVersion>
-		<PackageVersion>1.1.1</PackageVersion>
-		<PackageReleaseNotes>Added friendly TryGetValue function.</PackageReleaseNotes>
+		<FileVersion>1.1.2.0</FileVersion>
+		<AssemblyVersion>1.1.2.0</AssemblyVersion>
+		<PackageVersion>1.1.2</PackageVersion>
+		<PackageReleaseNotes>Added license to source files, updated copyright.</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Update="Icod.Argh.License.txt">
