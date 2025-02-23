@@ -42,7 +42,7 @@ namespace Icod.Argh {
 
 
 		#region properties
-		public String? this[ System.String name ] {
+		public System.String? this[ System.String name ] {
 			get {
 				return GetValue( name );
 			}
