@@ -20,7 +20,11 @@
 -->
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<DocumentationFile>$(OutDir)\$(Configuration)\$(TargetFrameworkVersion)\$(AssemblyName).XML</DocumentationFile>
+		<OutputType>Library</OutputType>
+		<TargetFrameworks>net7.0</TargetFrameworks>
+
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -33,7 +37,7 @@
 		<RepositoryUrl>https://github.com/uniblab/Icod.Argh</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>args;console</PackageTags>
-		<PackageLicenseFile>Icod.Argh.License.txt</PackageLicenseFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -45,18 +49,17 @@
 	<ItemGroup>
 		<Content Include="LICENSE" CopyToOutputDirectory="Always">
 			<Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </Content>
-	  <None Update="README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+			<PackagePath>\</PackagePath>
+		</Content>
+		<Content Include="README.md" CopyToOutputDirectory="Always">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</Content>
 	</ItemGroup>
 	<PropertyGroup>
 		<PreBuildEvent>
 		</PreBuildEvent>
 		<PostBuildEvent>
-			ren LICENSE $(AssemblyName).License.txt
 		</PostBuildEvent>
 	</PropertyGroup>
 </Project>
