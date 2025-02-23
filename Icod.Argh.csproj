@@ -37,19 +37,26 @@
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<FileVersion>1.1.2.0</FileVersion>
-		<AssemblyVersion>1.1.2.0</AssemblyVersion>
-		<PackageVersion>1.1.2</PackageVersion>
+		<FileVersion>1.1.3.0</FileVersion>
+		<AssemblyVersion>1.1.3.0</AssemblyVersion>
+		<PackageVersion>1.1.3</PackageVersion>
 		<PackageReleaseNotes>Added license to source files, updated copyright.</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup>
-	  <None Update="Icod.Argh.License.txt">
-	    <Pack>True</Pack>
+		<Content Include="LICENSE" CopyToOutputDirectory="Always">
+			<Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
-	  </None>
+	  </Content>
 	  <None Update="README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
 	</ItemGroup>
+	<PropertyGroup>
+		<PreBuildEvent>
+		</PreBuildEvent>
+		<PostBuildEvent>
+			ren LICENSE $(AssemblyName).License.txt
+		</PostBuildEvent>
+	</PropertyGroup>
 </Project>
