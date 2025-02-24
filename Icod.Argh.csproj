@@ -86,6 +86,7 @@
 		<PreBuildEvent>
 		</PreBuildEvent>
 		<PostBuildEvent>
+			ren LICENSE $(AssemblyName).License.txt
 		</PostBuildEvent>
 	</PropertyGroup>
 </Project>
