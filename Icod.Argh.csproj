@@ -86,7 +86,18 @@
 		<PreBuildEvent>
 		</PreBuildEvent>
 		<PostBuildEvent>
-			ren LICENSE $(AssemblyName).License.txt
 		</PostBuildEvent>
 	</PropertyGroup>
+
+	<Target Name="RmLicense" AfterTargets="Clean" Condition=" '$(OutDir)' != '' ">
+		<Delete ContinueOnError="false"
+			Files="$(OutDir)\$(AssemblyName).License.txt"
+		/>
+	</Target>
+	<Target Name="MvLicense" AfterTargets="Build" Condition=" '$(OutDir)' != '' ">
+		<Move ContinueOnError="false"
+			SourceFiles="$(OutDir)\LICENSE"
+			DestinationFiles="$(OutDir)\$(AssemblyName).License.txt"
+		/>
+	</Target>
 </Project>
