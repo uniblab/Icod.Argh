@@ -20,32 +20,47 @@
 -->
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<DocumentationFile>$(OutDir)\$(Configuration)\$(TargetFrameworkVersion)\$(AssemblyName).XML</DocumentationFile>
-		<OutputType>Library</OutputType>
-		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<RootNamespace>Icod.Argh</RootNamespace>
+		<AssemblyName>Icod.Argh</AssemblyName>
+		<ProjectGuid>{D62E398D-B477-4F8D-A1B3-02F84D3489CB}</ProjectGuid>
+		<Title>Icod Argument Handler</Title>
+		<Description>$(AssemblyName) is a command-line arguments handler and processor.</Description>
+		<Copyright>Copyright (c) 2025 Timothy J. Bruce</Copyright>
+		<RepositoryType>git</RepositoryType>
+		<PackageProjectUrl>https://github.com/uniblab/Icod.Argh</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/uniblab/Icod.Argh</RepositoryUrl>
+		<PackageTags>args;console</PackageTags>
+		<FileVersion>1.2.0.0</FileVersion>
+		<AssemblyVersion>1.2.0.0</AssemblyVersion>
+		<PackageVersion>1.2.0</PackageVersion>
+		<PackageReleaseNotes>Reformatting csproj file, renaming ReadMe.md on putput.</PackageReleaseNotes>
+	</PropertyGroup>
 
+	<PropertyGroup>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title>Icod Argument Handler</Title>
-		<Authors>uniblab</Authors>
-		<Description>$(AssemblyName) is a command-line arguments handler and processor.</Description>
-		<Copyright>Copyright (c) 2025 Timothy J. Bruce</Copyright>
-		<PackageProjectUrl>https://github.com/uniblab/Icod.Argh</PackageProjectUrl>
+		<Authors>Timothy J. Bruce</Authors>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<RepositoryUrl>https://github.com/uniblab/Icod.Argh</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageTags>args;console</PackageTags>
+		<PackageIcon>icon.png</PackageIcon>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<IncludeContentInPack>true</IncludeContentInPack>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<FileVersion>1.1.4.0</FileVersion>
-		<AssemblyVersion>1.1.4.0</AssemblyVersion>
-		<PackageVersion>1.1.4</PackageVersion>
-		<PackageReleaseNotes>Updated LGPL License, now supporting multiple platforms, fixed issue with Symbol generation.</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<OutputType>Library</OutputType>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<DocumentationFile>$(OutDir)\$(Configuration)\$(TargetFrameworkVersion)\$(AssemblyName).XML</DocumentationFile>
+		<StartupObject />
+		<TargetFrameworkProfile></TargetFrameworkProfile>
+		<FileAlignment>512</FileAlignment>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Configuration Condition=" '$(Platform)' == '' ">AnyCPU</Configuration>
 		<Configurations>Debug;Release;Staging</Configurations>
 		<SignAssembly>false</SignAssembly>
 	</PropertyGroup>
@@ -70,34 +85,39 @@
 		<Optimize>true</Optimize>
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>4</WarningLevel>
+		<AssemblyKeyContainerName>Icod</AssemblyKeyContainerName>
+		<AssemblyOriginatorKeyFile>..\STRONG_NAME_KEY\Icod.snk</AssemblyOriginatorKeyFile>
+		<SignAssembly>true</SignAssembly>
+		<DelaySign>false</DelaySign>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="LICENSE" CopyToOutputDirectory="Always">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</Content>
 		<Content Include="README.md" CopyToOutputDirectory="Always">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</Content>
+		<Content Include="LICENSE" CopyToOutputDirectory="Always">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</Content>
+		<None Include="icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
-	<PropertyGroup>
-		<PreBuildEvent>
-		</PreBuildEvent>
-		<PostBuildEvent>
-		</PostBuildEvent>
-	</PropertyGroup>
-
-	<Target Name="RmLicense" AfterTargets="Clean" Condition=" '$(OutDir)' != '' ">
+	<Target Name="RmContent" AfterTargets="Clean" Condition=" '$(OutDir)' != '' ">
 		<Delete ContinueOnError="false"
 			Files="$(OutDir)\$(AssemblyName).License.txt"
 		/>
+		<Delete ContinueOnError="false"
+			Files="$(OutDir)\$(AssemblyName).ReadMe.md"
+		/>
 	</Target>
-	<Target Name="MvLicense" AfterTargets="Build" Condition=" '$(OutDir)' != '' ">
+	<Target Name="MvContent" AfterTargets="Build" Condition=" '$(OutDir)' != '' ">
 		<Move ContinueOnError="false"
 			SourceFiles="$(OutDir)\LICENSE"
 			DestinationFiles="$(OutDir)\$(AssemblyName).License.txt"
+		/>
+		<Move ContinueOnError="false"
+			SourceFiles="$(OutDir)\README.md"
+			DestinationFiles="$(OutDir)\$(AssemblyName).ReadMe.md"
 		/>
 	</Target>
 </Project>
