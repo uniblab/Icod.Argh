@@ -1,3 +1,9 @@
+[*.{cs,vb,xml,md,txt,csproj,sln}]
+indent_style = tab
+indent_size = tab
+tab_size = 4
+end_of_line = crlf
+
 [*.{cs,vb}]
 #### Naming styles ####
 
@@ -46,9 +52,6 @@ dotnet_naming_style.pascal_case.required_suffix =
 dotnet_naming_style.pascal_case.word_separator = 
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
-tab_width = 4
-indent_size = 4
-end_of_line = crlf
 
 [*.cs]
 csharp_indent_labels = one_less_than_current
@@ -60,6 +63,9 @@ csharp_style_prefer_method_group_conversion = true:silent
 csharp_style_prefer_top_level_statements = false:silent
 csharp_style_prefer_primary_constructors = false:suggestion  # IDE0290 Use primary constructor
 dotnet_style_namespace_match_folder = false:suggestion  # IDE0130: Namespace does not match folder structure
+dotnet_diagnostic.IDE0028.severity = none  # IDE0028: Use collection initializers
+dotnet_diagnostic.CA1854.severity = none  # CA1854: Prefer the IDictionary.TryGetValue(TKey, out TValue) method
+dotnet_diagnostic.CA1859.severity = none  # CA1859: Use concrete types when possible for improved performance
 csharp_prefer_system_threading_lock = true:suggestion
 csharp_style_expression_bodied_methods = false:silent
 csharp_style_expression_bodied_constructors = false:silent
