@@ -37,7 +37,7 @@
 		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 		<FileVersion>1.2.0.0</FileVersion>
 		<AssemblyVersion>1.2.0.0</AssemblyVersion>
-		<PackageVersion>1.2.0-alpha</PackageVersion>
+		<PackageVersion>1.2.0</PackageVersion>
 		<PackageReleaseNotes>Added xmldoc, updated licensing information.</PackageReleaseNotes>
 	</PropertyGroup>
 
