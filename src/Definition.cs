@@ -20,6 +20,10 @@
 
 namespace Icod.Argh {
 
+	/// <include file='..\doc\Icod.Argh.xml' path='types/type[@name="Icod.Definition"]/member[@name=""]/*'/>
+	[Icod.LgplLicense]
+	[Icod.Author( "Timothy J. ``Flytrap'' Bruce" )]
+	[Icod.ReportBugsTo( "uniblab@hotmail.com" )]
 	public sealed class Definition {
 
 		#region fields
@@ -29,6 +33,7 @@ namespace Icod.Argh {
 
 
 		#region .ctor
+		/// <include file='..\doc\Icod.Argh.xml' path='types/type[@name="Icod.Definition"]/member[@name="(System.String,System.Collections.Generic.IEnumerable`1)"]/*'/>
 		public Definition( System.String name, System.Collections.Generic.IEnumerable<System.String> switches ) : base() {
 			myName = name;
 			mySwitch = new System.Collections.Generic.List<System.String>( switches ).AsReadOnly();
@@ -37,12 +42,14 @@ namespace Icod.Argh {
 
 
 		#region properties
+		/// <include file='..\doc\Icod.Argh.xml' path='types/type[@name="Icod.Definition"]/member[@name="Name"]/*'/>
 		public System.String Name {
 			get {
 				return myName;
 			}
 		}
 
+		/// <include file='..\doc\Icod.Argh.xml' path='types/type[@name="Icod.Definition"]/member[@name="Switch"]/*'/>
 		public System.Collections.Generic.IEnumerable<System.String> Switch {
 			get {
 				return mySwitch;

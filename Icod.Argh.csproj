@@ -29,40 +29,40 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://github.com/uniblab/Icod.Argh</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/uniblab/Icod.Argh</RepositoryUrl>
-		<PackageTags>args;console</PackageTags>
+		<PackageTags>library, util, args, console, command line, command-line, command args, command-args</PackageTags>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<OutputType>Library</OutputType>
+		<StartupObject />
+
+		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 		<FileVersion>1.2.0.0</FileVersion>
 		<AssemblyVersion>1.2.0.0</AssemblyVersion>
-		<PackageVersion>1.2.0</PackageVersion>
-		<PackageReleaseNotes>Reformatting csproj file, renaming ReadMe.md on putput.</PackageReleaseNotes>
+		<PackageVersion>1.2.0-alpha</PackageVersion>
+		<PackageReleaseNotes>Reformatting csproj file, renaming ReadMe.md on putput, fixing tags, adding xmldoc.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Authors>Timothy J. Bruce</Authors>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageIcon>icon.png</PackageIcon>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<IncludeContentInPack>true</IncludeContentInPack>
-		<IncludeSymbols>True</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-		<OutputType>Library</OutputType>
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<DocumentationFile>$(OutDir)\$(Configuration)\$(TargetFrameworkVersion)\$(AssemblyName).XML</DocumentationFile>
-		<StartupObject />
 		<TargetFrameworkProfile></TargetFrameworkProfile>
 		<FileAlignment>512</FileAlignment>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 		<Configuration Condition=" '$(Platform)' == '' ">AnyCPU</Configuration>
-		<Configurations>Debug;Release;Staging</Configurations>
+		<Configurations>Debug;Staging;Release</Configurations>
 		<SignAssembly>false</SignAssembly>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<DocumentationFile>$(OutDir)\$(Configuration)\$(TargetFrameworkVersion)\$(AssemblyName).XML</DocumentationFile>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Authors>Timothy J. Bruce</Authors>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<IncludeContentInPack>true</IncludeContentInPack>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -100,24 +100,25 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="doc\Icod.Argh.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Include="icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Icod" Version="2.0.2" />
+	</ItemGroup>
 	<Target Name="RmContent" AfterTargets="Clean" Condition=" '$(OutDir)' != '' ">
-		<Delete ContinueOnError="false"
-			Files="$(OutDir)\$(AssemblyName).License.txt"
-		/>
-		<Delete ContinueOnError="false"
-			Files="$(OutDir)\$(AssemblyName).ReadMe.md"
-		/>
+		<Delete ContinueOnError="false" Files="$(OutDir)\$(AssemblyName).License.txt" />
+		<Delete ContinueOnError="false" Files="$(OutDir)\$(AssemblyName).ReadMe.md" />
 	</Target>
 	<Target Name="MvContent" AfterTargets="Build" Condition=" '$(OutDir)' != '' ">
-		<Move ContinueOnError="false"
-			SourceFiles="$(OutDir)\LICENSE"
-			DestinationFiles="$(OutDir)\$(AssemblyName).License.txt"
-		/>
-		<Move ContinueOnError="false"
-			SourceFiles="$(OutDir)\README.md"
-			DestinationFiles="$(OutDir)\$(AssemblyName).ReadMe.md"
-		/>
+		<Move ContinueOnError="false" SourceFiles="$(OutDir)\LICENSE" DestinationFiles="$(OutDir)\$(AssemblyName).License.txt" />
+		<Move ContinueOnError="false" SourceFiles="$(OutDir)\README.md" DestinationFiles="$(OutDir)\$(AssemblyName).ReadMe.md" />
 	</Target>
 </Project>
