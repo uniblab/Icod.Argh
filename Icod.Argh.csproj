@@ -38,7 +38,7 @@
 		<FileVersion>1.2.0.0</FileVersion>
 		<AssemblyVersion>1.2.0.0</AssemblyVersion>
 		<PackageVersion>1.2.0-alpha</PackageVersion>
-		<PackageReleaseNotes>Reformatting csproj file, renaming ReadMe.md on putput, fixing tags, adding xmldoc.</PackageReleaseNotes>
+		<PackageReleaseNotes>Added xmldoc, updated licensing information.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -107,12 +107,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Icod" Version="2.0.3" />
+	</ItemGroup>
+
+
+	<ItemGroup>
 		<None Include="icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="Icod" Version="2.0.2" />
-	</ItemGroup>
 	<Target Name="RmContent" AfterTargets="Clean" Condition=" '$(OutDir)' != '' ">
 		<Delete ContinueOnError="false" Files="$(OutDir)\$(AssemblyName).License.txt" />
 		<Delete ContinueOnError="false" Files="$(OutDir)\$(AssemblyName).ReadMe.md" />
